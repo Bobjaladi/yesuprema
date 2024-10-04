@@ -381,6 +381,23 @@
         <li><a href="contact.html">Contact</a></li>
     </ul>
 </nav>
+
+<div id="daily-verse">
+    <h2>Today's Bible Verse</h2>
+    <p id="verse-content">Loading...</p>
+</div>
+
+<script>
+    // Fetch Bible verse from an API
+    fetch('https://beta.ourmanna.com/api/v1/get/?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('verse-content').innerText = data.verse.details.text + " - " + data.verse.details.reference;
+        })
+        .catch(error => {
+            document.getElementById('verse-content').innerText = "Unable to load verse. Please try again later.";
+        });
+</script>
 <center><h2>Trinity</h2></center>
 
 <div id="home" class="highlight">
